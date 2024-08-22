@@ -9,8 +9,29 @@ import UIKit
 
 class ApiKeyViewController: UIViewController {
 
+    @IBOutlet weak var apiKeyTextField: UITextField?
+    @IBOutlet weak var errorMessageLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showError(error: nil)
+    }
+    
+    @IBAction func goButtonClicked() {
+        let apiKey = apiKeyTextField?.text ?? ""
+        if apiKey.count == 0 {
+            showError(error: "Api Key cannot be empty")
+        } else if apiKey.count < 32 {
+            showError(error: "Api Key is too short")
+        } else if apiKey.rangeOfCharacter(from: CharacterSet.symbols) != nil {
+            showError(error: "Invalid Api Key")
+        }
+    }
+    
+    func showError(error: String?) {
+        errorMessageLabel?.text = error ?? ""
+        errorMessageLabel?.isHidden = (error?.count ?? 0) == 0
     }
     
     func goToNextScreen() {

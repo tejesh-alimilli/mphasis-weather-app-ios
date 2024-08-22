@@ -172,6 +172,8 @@
 			dependencies = (
 			);
 			name = MphasisWeatherApp;
+			packageProductDependencies = (
+			);
 			productName = MphasisWeatherApp;
 			productReference = 7028C9982C77955300C46927 /* MphasisWeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -244,6 +246,8 @@
 				Base,
 			);
 			mainGroup = 7028C98F2C77955300C46927;
+			packageReferences = (
+			);
 			productRefGroup = 7028C9992C77955300C46927 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
