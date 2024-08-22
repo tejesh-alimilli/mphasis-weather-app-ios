@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  MphasisWeatherApp
 //
 //  Created by user267483 on 8/22/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class SearchViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var apiTextField: UITextField!
     @IBOutlet weak var searchBar: UISearchBar!

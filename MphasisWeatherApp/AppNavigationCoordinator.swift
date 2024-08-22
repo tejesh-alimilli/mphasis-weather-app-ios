@@ -29,6 +29,6 @@ class AppNavigationCoordinator {
     }
     
     func launchSearchScreen(_ window: UIWindow) {
-        launch(screen: "ViewController", window, vcClass: ViewController.self)
+        launch(screen: "SearchViewController", window, vcClass: SearchViewController.self)
     }
 }

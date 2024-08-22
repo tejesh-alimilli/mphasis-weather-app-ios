@@ -26,6 +26,10 @@ class ApiKeyViewController: UIViewController {
             showError(error: "Api Key is too short")
         } else if apiKey.rangeOfCharacter(from: CharacterSet.symbols) != nil {
             showError(error: "Invalid Api Key")
+        } else {
+            showError(error: nil)
+            AppState.shared.apiKey = apiKey
+            goToNextScreen()
         }
     }
     
@@ -35,6 +39,6 @@ class ApiKeyViewController: UIViewController {
     }
     
     func goToNextScreen() {
-        
+        AppNavigationCoordinator.shared.launchSearchScreen(self.view.window!)
     }
 }
