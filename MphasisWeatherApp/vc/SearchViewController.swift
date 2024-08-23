@@ -25,11 +25,14 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
             return
         }
         
+        print("search clicked")
         showError(error: nil)
         
+        showProgressIndicator()
         Task {
             let cityInfo = await WebService.shared.getGeoCodingInfo(cityName: searchBar.text ?? "")
             Task { @MainActor [weak self] in
+                self?.hideProgresssIndicator()
                 self?.cityInfoCallbackt(cityInfo:cityInfo)
             }
         }
