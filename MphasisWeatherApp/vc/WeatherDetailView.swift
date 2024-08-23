@@ -22,6 +22,7 @@ struct WeatherDetailView: View {
             }
             
             Text("the temprature is \(viewModal.main.tempString), but feels like \(viewModal.main.feelsLikeString)")
+                .padding(50)
         }.task {
             for (i, w) in viewModal.weather.enumerated() {
                 viewModal.weather[i].iconImage = await WebService.shared.getWeatherIcon(iconName: w.icon)
@@ -31,5 +32,5 @@ struct WeatherDetailView: View {
 }
 
 #Preview {
-    WeatherDetailView(viewModal: WeatherDetailViewModel(weather: [WeatherDetailInfoViewModel(id: 123, main: "clear", description: "clear sky", icon: "ic0n")], main: TempratureInfoViewModel(temp: 123.4, feels_like: 132.5)))
+    WeatherDetailView(viewModal: WeatherDetailViewModel(weather: [WeatherDetailInfoViewModel(id: 123, main: "clear", description: "clear sky", icon: "03d")], main: TempratureInfoViewModel(temp: 123.4, feels_like: 132.5)))
 }

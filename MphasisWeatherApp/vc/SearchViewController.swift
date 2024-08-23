@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import CoreLocation
 
-class SearchViewController: BaseViewController, UISearchBarDelegate {
+class SearchViewController: BaseViewController, UISearchBarDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.text = AppState.shared.cityName
+        locationManager.requestWhenInUseAuthorization()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -40,6 +44,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     }
     
     @IBAction func currentLocationClicked(_ sender: UIButton) {
+        
     }
     
     func cityInfoCallbackt(cityInfo: CityInfo?) {
@@ -63,8 +68,13 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
                     weatherDetailInfoViewModelList.append(weatherDetailInfoViewModel)
                 }
                 let weatherDetailViewModal = WeatherDetailViewModel(weather: weatherDetailInfoViewModelList, main: TempratureInfoViewModel(temp: weatherInfo.main.temp, feels_like: weatherInfo.main.feels_like))
+                AppNavigationCoordinator.shared.showDetailView(viewModal: weatherDetailViewModal, self)
             }
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("location \(locations)")
     }
 }
 

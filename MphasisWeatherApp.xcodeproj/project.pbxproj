@@ -62,6 +62,7 @@
 		70AF91BD2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */; };
 		70AF91BE2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */; };
 		70AF91BF2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */; };
+		70AF91C22C78E68A00933F81 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70AF91C12C78E68A00933F81 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		707523D32C78407A0022BDD6 /* WeatherDetailInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailInfoViewModel.swift; sourceTree = "<group>"; };
 		707523D72C7841EC0022BDD6 /* TempratureInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempratureInfoViewModel.swift; sourceTree = "<group>"; };
 		70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorVcProtocol.swift; sourceTree = "<group>"; };
+		70AF91C12C78E68A00933F81 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70AF91C22C78E68A00933F81 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +146,7 @@
 				7028C9B12C77955500C46927 /* MphasisWeatherAppTests */,
 				7028C9BB2C77955500C46927 /* MphasisWeatherAppUITests */,
 				7028C9992C77955300C46927 /* Products */,
+				70AF91C02C78E68A00933F81 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +235,14 @@
 				707523D72C7841EC0022BDD6 /* TempratureInfoViewModel.swift */,
 			);
 			path = "view-model";
+			sourceTree = "<group>";
+		};
+		70AF91C02C78E68A00933F81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70AF91C12C78E68A00933F81 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -600,6 +612,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MphasisWeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "to get weather info";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -627,6 +640,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MphasisWeatherApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "to get weather info";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

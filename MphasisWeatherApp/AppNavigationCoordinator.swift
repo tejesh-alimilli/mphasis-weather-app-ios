@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class AppNavigationCoordinator {
     static let shared = AppNavigationCoordinator()
@@ -30,5 +31,10 @@ class AppNavigationCoordinator {
     
     func launchSearchScreen(_ window: UIWindow) {
         launch(screen: "SearchViewController", window, vcClass: SearchViewController.self)
+    }
+    
+    func showDetailView(viewModal: WeatherDetailViewModel, _ parentVc: UIViewController) {
+        let vc = UIHostingController(rootView: WeatherDetailView(viewModal: viewModal))
+        parentVc.navigationController?.pushViewController(vc, animated: true)
     }
 }
