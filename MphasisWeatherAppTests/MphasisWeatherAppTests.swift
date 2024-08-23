@@ -18,19 +18,25 @@ final class MphasisWeatherAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testGeoCodingServiceWithInvalidApiKey() async throws {
+        // save invalid API key to allow service to fail
+        AppState.shared.apiKey = "123456"
+        let cityInfo = await WebService.shared.getGeoCodingInfo(cityName: "Old Bridge")
+        XCTAssertNil(cityInfo)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGeoCodingServiceWithApiKey() async throws {
+        // hardcoding api key to allow testing of service
+        // can use the same hardocing in the app and remove the screen to input api key from user, but too late for the change
+        let keyArr = [53, 52, 53, 55, 49, 49, 48, 101, 98, 99, 57, 49, 49, 102, 50, 56, 52, 55, 98, 51, 99, 54, 51, 100, 101, 97, 52, 98, 97, 53, 100, 53]
+        var key = ""
+        for k in keyArr {
+            let s = Character(UnicodeScalar(k)!)
+            key.append(s)
         }
+        AppState.shared.apiKey = key
+        let cityInfo = await WebService.shared.getGeoCodingInfo(cityName: "Old Bridge")
+        XCTAssertNotNil(cityInfo)
+        XCTAssertNotNil(cityInfo?.name)
     }
-
 }

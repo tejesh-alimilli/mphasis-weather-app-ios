@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor
+//@MainActor
 class AppState {
     static let shared = AppState()
     
