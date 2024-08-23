@@ -21,6 +21,7 @@ class WebService {
                 return nil
             }
             
+//            can use enum constants for urls to avoid spelling errors, also to keep all urls in one place
             let url = URL(string: "\(apiBaseUrl)geo/1.0/direct?q=\(cityName)&limit=1&appid=\(apiKey)")!
             let (data, response) = try await URLSession.shared.data(from: url)
             if let httpResponse = response as? HTTPURLResponse {

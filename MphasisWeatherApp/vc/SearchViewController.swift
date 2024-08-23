@@ -13,6 +13,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.text = AppState.shared.cityName
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -25,10 +26,10 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
             return
         }
         
-        print("search clicked")
         showError(error: nil)
         
         showProgressIndicator()
+        AppState.shared.cityName = searchBar.text
         Task {
             let cityInfo = await WebService.shared.getGeoCodingInfo(cityName: searchBar.text ?? "")
             Task { @MainActor [weak self] in
@@ -53,7 +54,6 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         }
         
         showError(error: nil)
-        print("city \(cityInfo)")
     }
 }
 

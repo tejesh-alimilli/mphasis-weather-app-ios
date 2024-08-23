@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let window = window else { return }
         
-        if let a = AppState.shared.apiKey, a.count > 0 {
-            print("\(a)")
+        if let apiKey = AppState.shared.apiKey, apiKey.count > 0 {
             AppNavigationCoordinator.shared.launchSearchScreen(window)
         } else {
             AppNavigationCoordinator.shared.launchApiKeyScreen(window)
