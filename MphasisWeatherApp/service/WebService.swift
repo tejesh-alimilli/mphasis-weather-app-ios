@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WebService {
     static let shared = WebService()
@@ -41,7 +42,7 @@ class WebService {
     }
     
     // can use a common method to avoid duplication of boilerplate code here
-    func getWeatherDetail(lat: Int, lon: Int) async -> WeatherDetailResponse? {
+    func getWeatherDetail(lat: Double, lon: Double) async -> WeatherDetailResponse? {
         do {
             guard let apiKey = AppState.shared.apiKey else {
                 print("api key is missing")
@@ -63,6 +64,29 @@ class WebService {
             }
         } catch {
             print("error in weather info service \(error)")
+        }
+        return nil
+    }
+    
+    func getWeatherIcon(iconName: String) async -> UIImage? {
+        do {
+            guard let apiKey = AppState.shared.apiKey else {
+                print("api key is missing")
+                return nil
+            }
+            
+            let url = URL(string: "\(imageBaseUrl)img/wn/\(iconName)@2x.png")!
+            let (data, response) = try await URLSession.shared.data(from: url)
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    let image = UIImage(data: data)
+                    return image
+                } else {
+                    print("invalid http response code \(httpResponse)")
+                }
+            }
+        } catch {
+            print("error in image service \(error)")
         }
         return nil
     }

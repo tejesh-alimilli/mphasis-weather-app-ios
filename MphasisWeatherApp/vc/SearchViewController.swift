@@ -54,6 +54,17 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         }
         
         showError(error: nil)
+        Task {
+            let weatherInfo = await WebService.shared.getWeatherDetail(lat: cityInfo.lat, lon: cityInfo.lon)
+            if let weatherInfo = weatherInfo {
+                var weatherDetailInfoViewModelList = Array<WeatherDetailInfoViewModel>()
+                for weatherDetail in weatherInfo.weather {
+                    let weatherDetailInfoViewModel = WeatherDetailInfoViewModel(id: weatherDetail.id, main: weatherDetail.main, description: weatherDetail.description, icon: weatherDetail.icon)
+                    weatherDetailInfoViewModelList.append(weatherDetailInfoViewModel)
+                }
+                let weatherDetailViewModal = WeatherDetailViewModel(weather: weatherDetailInfoViewModelList, main: TempratureInfoViewModel(temp: weatherInfo.main.temp, feels_like: weatherInfo.main.feels_like))
+            }
+        }
     }
 }
 
