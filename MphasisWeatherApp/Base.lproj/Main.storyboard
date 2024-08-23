@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4e3-JR-wKh">
-                                <rect key="frame" x="8" y="66.999999999999986" width="377" height="252.66666666666663"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4e3-JR-wKh">
+                                <rect key="frame" x="8" y="67" width="377" height="239"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" prompt="Enter City Name here" translatesAutoresizingMaskIntoConstraints="NO" id="Leb-Xt-OfM">
                                         <rect key="frame" x="0.0" y="0.0" width="377" height="90"/>
@@ -27,19 +27,31 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="c72-Hl-6yE"/>
                                         </connections>
                                     </searchBar>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WvF-Q3-7cY">
-                                        <rect key="frame" x="0.0" y="109.99999999999999" width="377" height="142.66666666666663"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQT-6L-08C">
+                                        <rect key="frame" x="0.0" y="110" width="377" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="ErrorColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WvF-Q3-7cY">
+                                        <rect key="frame" x="0.0" y="150.33333333333334" width="377" height="88.666666666666657"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gB3-f1-SfD">
-                                                <rect key="frame" x="0.0" y="0.0" width="377" height="88.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="377" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Search"/>
+                                                <connections>
+                                                    <action selector="searchClicked" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z7x-J3-qcU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="I3I-Ha-PYl">
-                                                <rect key="frame" x="0.0" y="108.33333333333334" width="377" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="54.333333333333314" width="377" height="34.333333333333343"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Current Location"/>
+                                                <connections>
+                                                    <action selector="currentLocationClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H49-7O-Bj8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <variation key="widthClass=compact" axis="vertical"/>
@@ -57,6 +69,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cFr-QN-APT"/>
                     <connections>
+                        <outlet property="errorMessageLabel" destination="eQT-6L-08C" id="XHu-QB-OSM"/>
                         <outlet property="searchBar" destination="Leb-Xt-OfM" id="04w-o3-Pqx"/>
                     </connections>
                 </viewController>
