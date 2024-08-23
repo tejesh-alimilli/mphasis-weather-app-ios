@@ -59,6 +59,9 @@
 		707523D82C7841EC0022BDD6 /* TempratureInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707523D72C7841EC0022BDD6 /* TempratureInfoViewModel.swift */; };
 		707523D92C7841EC0022BDD6 /* TempratureInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707523D72C7841EC0022BDD6 /* TempratureInfoViewModel.swift */; };
 		707523DA2C7841EC0022BDD6 /* TempratureInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707523D72C7841EC0022BDD6 /* TempratureInfoViewModel.swift */; };
+		70AF91BD2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */; };
+		70AF91BE2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */; };
+		70AF91BF2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,7 @@
 		707523CF2C783F970022BDD6 /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
 		707523D32C78407A0022BDD6 /* WeatherDetailInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailInfoViewModel.swift; sourceTree = "<group>"; };
 		707523D72C7841EC0022BDD6 /* TempratureInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempratureInfoViewModel.swift; sourceTree = "<group>"; };
+		70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorVcProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,7 @@
 				704B81562C77BC1D005030C5 /* ApiKeyViewController.swift */,
 				7055E0B72C780FA700B5A1FA /* BaseViewController.swift */,
 				7055E0C12C78282900B5A1FA /* WeatherDetailView.swift */,
+				70AF91BC2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift */,
 			);
 			path = vc;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				7055E0B42C78034B00B5A1FA /* CityInfo.swift in Sources */,
 				7028C99E2C77955300C46927 /* SceneDelegate.swift in Sources */,
 				707523D42C78407A0022BDD6 /* WeatherDetailInfoViewModel.swift in Sources */,
+				70AF91BD2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */,
 				7055E0CE2C782A7800B5A1FA /* WeatherDetailInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +405,7 @@
 				7055E0BD2C7823F200B5A1FA /* ApiKeyViewController.swift in Sources */,
 				7055E0CB2C782A2C00B5A1FA /* TempratureInfo.swift in Sources */,
 				7055E0B12C77FBDF00B5A1FA /* WebService.swift in Sources */,
+				70AF91BE2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */,
 				7055E0C32C78282900B5A1FA /* WeatherDetailView.swift in Sources */,
 				7028C9B32C77955500C46927 /* MphasisWeatherAppTests.swift in Sources */,
 				7055E0B92C780FA700B5A1FA /* BaseViewController.swift in Sources */,
@@ -425,6 +432,7 @@
 				704B815E2C77BFA8005030C5 /* AppState.swift in Sources */,
 				7055E0BE2C7823F300B5A1FA /* ApiKeyViewController.swift in Sources */,
 				707523D62C78407A0022BDD6 /* WeatherDetailInfoViewModel.swift in Sources */,
+				70AF91BF2C78E12700933F81 /* ProgressIndicatorVcProtocol.swift in Sources */,
 				7055E0D02C782A7800B5A1FA /* WeatherDetailInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
