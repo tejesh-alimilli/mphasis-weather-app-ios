@@ -44,7 +44,26 @@ class SearchViewController: BaseViewController, UISearchBarDelegate, CLLocationM
     }
     
     @IBAction func currentLocationClicked(_ sender: UIButton) {
+        // instead of checking everytime use delegate to save the changes in status
+        if !CLLocationManager.locationServicesEnabled() {
+            showError(error: "Please enable location services")
+            return
+        }
         
+        if locationManager.authorizationStatus != .authorizedWhenInUse && locationManager.authorizationStatus != .authorizedAlways {
+            showError(error: "Please allow location access")
+            return
+        }
+        
+        if locationManager.location == nil {
+            showError(error: "Currnet location not known yet")
+            return
+        }
+        
+        showError(error: nil)
+        Task {
+            await loadWeatherInfoForLocation(lat: locationManager.location!.coordinate.latitude, lon: locationManager.location!.coordinate.longitude)
+        }
     }
     
     func cityInfoCallbackt(cityInfo: CityInfo?) {
@@ -60,21 +79,21 @@ class SearchViewController: BaseViewController, UISearchBarDelegate, CLLocationM
         
         showError(error: nil)
         Task {
-            let weatherInfo = await WebService.shared.getWeatherDetail(lat: cityInfo.lat, lon: cityInfo.lon)
-            if let weatherInfo = weatherInfo {
-                var weatherDetailInfoViewModelList = Array<WeatherDetailInfoViewModel>()
-                for weatherDetail in weatherInfo.weather {
-                    let weatherDetailInfoViewModel = WeatherDetailInfoViewModel(id: weatherDetail.id, main: weatherDetail.main, description: weatherDetail.description, icon: weatherDetail.icon)
-                    weatherDetailInfoViewModelList.append(weatherDetailInfoViewModel)
-                }
-                let weatherDetailViewModal = WeatherDetailViewModel(weather: weatherDetailInfoViewModelList, main: TempratureInfoViewModel(temp: weatherInfo.main.temp, feels_like: weatherInfo.main.feels_like))
-                AppNavigationCoordinator.shared.showDetailView(viewModal: weatherDetailViewModal, self)
-            }
+            await loadWeatherInfoForLocation(lat: cityInfo.lat, lon:cityInfo.lon)
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("location \(locations)")
+    func loadWeatherInfoForLocation(lat: Double, lon: Double) async {
+        let weatherInfo = await WebService.shared.getWeatherDetail(lat: lat, lon: lon)
+        if let weatherInfo = weatherInfo {
+            var weatherDetailInfoViewModelList = Array<WeatherDetailInfoViewModel>()
+            for weatherDetail in weatherInfo.weather {
+                let weatherDetailInfoViewModel = WeatherDetailInfoViewModel(id: weatherDetail.id, main: weatherDetail.main, description: weatherDetail.description, icon: weatherDetail.icon)
+                weatherDetailInfoViewModelList.append(weatherDetailInfoViewModel)
+            }
+            let weatherDetailViewModal = WeatherDetailViewModel(weather: weatherDetailInfoViewModelList, main: TempratureInfoViewModel(temp: weatherInfo.main.temp, feels_like: weatherInfo.main.feels_like))
+            AppNavigationCoordinator.shared.showDetailView(viewModal: weatherDetailViewModal, self)
+        }
     }
 }
 
