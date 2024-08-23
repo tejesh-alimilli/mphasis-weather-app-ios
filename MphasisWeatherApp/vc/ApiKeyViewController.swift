@@ -7,15 +7,12 @@
 
 import UIKit
 
-class ApiKeyViewController: UIViewController {
+class ApiKeyViewController: BaseViewController {
 
     @IBOutlet weak var apiKeyTextField: UITextField?
-    @IBOutlet weak var errorMessageLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        showError(error: nil)
     }
     
     @IBAction func goButtonClicked() {
@@ -31,11 +28,6 @@ class ApiKeyViewController: UIViewController {
             AppState.shared.apiKey = apiKey
             goToNextScreen()
         }
-    }
-    
-    func showError(error: String?) {
-        errorMessageLabel?.text = error ?? ""
-        errorMessageLabel?.isHidden = (error?.count ?? 0) == 0
     }
     
     func goToNextScreen() {

@@ -7,15 +7,12 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate {
+class SearchViewController: BaseViewController, UISearchBarDelegate {
 
-    @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        showError(error: nil)
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -23,8 +20,15 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func searchClicked() {
+        if searchBar.text == nil || searchBar.text?.count == 0 {
+            showError(error: "Please enter a city name")
+            return
+        }
+        
+        showError(error: nil)
+        
         Task {
-            let cityInfo = await WebService.shared.getGeoCodingInfo(cityName: "Old Bridge")
+            let cityInfo = await WebService.shared.getGeoCodingInfo(cityName: searchBar.text ?? "")
             Task { @MainActor [weak self] in
                 self?.cityInfoCallbackt(cityInfo:cityInfo)
             }
@@ -34,23 +38,19 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     @IBAction func currentLocationClicked(_ sender: UIButton) {
     }
     
-    func showError(error: String?) {
-        errorMessageLabel?.text = error ?? ""
-        errorMessageLabel?.isHidden = (error?.count ?? 0) == 0
-    }
-    
     func cityInfoCallbackt(cityInfo: CityInfo?) {
         guard let cityInfo = cityInfo else {
             showError(error: "\(searchBar.text ?? "") not found")
             return
         }
         
-        if cityInfo.country.capitalized != "US" {
+        if cityInfo.country.uppercased() != "US" {
             showError(error: "Please search for US city")
             return
         }
         
         showError(error: nil)
+        print("city \(cityInfo)")
     }
 }
 
